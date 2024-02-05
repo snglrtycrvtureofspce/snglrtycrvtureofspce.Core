@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>snglrtycrvtureofspce.Core</id>
+    <version>1.0.0</version>
+    <title>snglrtycrvtureofspce.Core</title>
+    <authors>snglrtycrvtureofspce</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="1c47654c0cdfd3a339b649a730229dbeb8c8d0cb" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Asp.Versioning.Mvc.ApiExplorer" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerGen" version="6.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.dll" target="lib\net8.0\snglrtycrvtureofspce.Core.dll" />
+    <file src="C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.xml" target="lib\net8.0\snglrtycrvtureofspce.Core.xml" />
+  </files>
+</package>

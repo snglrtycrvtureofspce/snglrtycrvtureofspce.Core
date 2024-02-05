@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "w85VFaZx2wI5pcOKwgrWfT2irqzF+qfMbMTkk7kDAknRNNFfkdZtJWbl32nAsvXZrDTIHfPMixPhmoVH13e3FA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.abstractions\\8.0.0\\asp.versioning.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.http\\8.0.0\\asp.versioning.http.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.mvc\\8.0.0\\asp.versioning.mvc.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.0.0\\asp.versioning.mvc.apiexplorer.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

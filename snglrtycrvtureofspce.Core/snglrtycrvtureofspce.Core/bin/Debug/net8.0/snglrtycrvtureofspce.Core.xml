@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>snglrtycrvtureofspce.Core</name>
+    </assembly>
+    <members>
+        <member name="T:snglrtycrvtureofspce.Core.Filters.PathPrefixInsertDocumentFilter">
+            <inheritdoc />
+        </member>
+        <member name="M:snglrtycrvtureofspce.Core.Filters.PathPrefixInsertDocumentFilter.#ctor(System.String)">
+            <summary>
+            Constructor with params
+            </summary>
+            <param name="prefix"></param>
+        </member>
+        <member name="M:snglrtycrvtureofspce.Core.Filters.PathPrefixInsertDocumentFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Filters.SwaggerDefaultValues">
+            <summary>
+            Represents the OpenAPI/Swashbuckle operation filter used to document information provided, but not used.
+            </summary>
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.
+            Once they are fixed and published, this class can be removed.</remarks>
+        </member>
+        <member name="M:snglrtycrvtureofspce.Core.Filters.SwaggerDefaultValues.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.IEntity">
+            <summary>
+            Base entity interface
+            </summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.IResponse">
+            <summary>Interface of response</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.IResponse.Message">
+            <summary>Return Message</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.IResponse.StatusCode">
+            <summary>Status code</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1">
+            <summary>
+            Standard response of Create, Update, Get single operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.Message">
+            <summary>Message of operation</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.StatusCode">
+            <summary>Status code</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.Item">
+            <summary>Item or null</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.PageView`1">
+            <summary>The page view</summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Page">
+            <summary>Current page</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Count">
+            <summary>Count per page</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Total">
+            <summary>Total item</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Elements">
+            <summary>List of elements</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.ValidationErrorResponse">
+            <summary>
+            Represents a validation error response returned in case of a 400 Bad Request status with validation errors.
+            </summary>
+        </member>
+    </members>
+</doc>

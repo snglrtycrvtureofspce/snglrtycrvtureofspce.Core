@@ -1,4 +1,6 @@
-﻿namespace snglrtycrvtureofspce.Core.Infrastructure;
+﻿using snglrtycrvtureofspce.Core.Base.Infrastructure;
+
+namespace snglrtycrvtureofspce.Core.Base.Responses;
 
 /// <summary>
 /// Standard response of Create, Update, Get single operation

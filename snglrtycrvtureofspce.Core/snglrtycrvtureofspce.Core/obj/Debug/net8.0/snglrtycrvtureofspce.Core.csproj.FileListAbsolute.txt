@@ -1,0 +1,14 @@
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.deps.json
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.dll
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.pdb
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.csproj.AssemblyReference.cache
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.AssemblyInfoInputs.cache
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.AssemblyInfo.cs
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.csproj.CoreCompileInputs.cache
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.sourcelink.json
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.dll
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\refint\snglrtycrvtureofspce.Core.dll
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\snglrtycrvtureofspce.Core.pdb
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\obj\Debug\net8.0\ref\snglrtycrvtureofspce.Core.dll
+C:\Users\asp1r\OneDrive\Документы\snglrtycrvtureofspce\Git\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core\bin\Debug\net8.0\snglrtycrvtureofspce.Core.xml

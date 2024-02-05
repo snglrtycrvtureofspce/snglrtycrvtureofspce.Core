@@ -1,4 +1,4 @@
-﻿namespace snglrtycrvtureofspce.Core.Infrastructure;
+﻿namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 
 /// <summary>The page view</summary>
 /// <typeparam name="TModel"></typeparam>
