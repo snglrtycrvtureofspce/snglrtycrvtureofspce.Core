@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snglrtycrvtureofspce.Core", "snglrtycrvtureofspce.Core\snglrtycrvtureofspce.Core.csproj", "{C16A8634-36D6-4353-B246-D6F43E49D92A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C16A8634-36D6-4353-B246-D6F43E49D92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16A8634-36D6-4353-B246-D6F43E49D92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16A8634-36D6-4353-B246-D6F43E49D92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16A8634-36D6-4353-B246-D6F43E49D92A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
