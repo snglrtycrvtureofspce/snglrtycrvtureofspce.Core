@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w85VFaZx2wI5pcOKwgrWfT2irqzF+qfMbMTkk7kDAknRNNFfkdZtJWbl32nAsvXZrDTIHfPMixPhmoVH13e3FA==",
+  "dgSpecHash": "OnG5rd18E/NnXToDgWpRRWUz7jCTMXl2dH0e8pyGBHWUHculAjDu44WjJLLQ7EGMePEvFhLXEWO/x+ezYWgVPA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
+  "projectFilePath": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.abstractions\\8.0.0\\asp.versioning.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.http\\8.0.0\\asp.versioning.http.8.0.0.nupkg.sha512",
