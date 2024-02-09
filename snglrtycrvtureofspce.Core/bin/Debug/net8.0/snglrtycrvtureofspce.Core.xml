@@ -4,6 +4,83 @@
         <name>snglrtycrvtureofspce.Core</name>
     </assembly>
     <members>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Infrastructure.IEntity">
+            <summary>
+            Base entity interface
+            </summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Infrastructure.IResponse">
+            <summary>Interface of response</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.IResponse.Message">
+            <summary>Return Message</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.IResponse.StatusCode">
+            <summary>Status code</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1">
+            <summary>The page view</summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1.Page">
+            <summary>Current page</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1.Count">
+            <summary>Count per page</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1.Total">
+            <summary>Total item</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1.Elements">
+            <summary>List of elements</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Responses.ItemResponse`1">
+            <summary>
+            Standard response of Create, Update, Get single operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.ItemResponse`1.Message">
+            <summary>Message of operation</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.ItemResponse`1.StatusCode">
+            <summary>Status code</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.ItemResponse`1.Item">
+            <summary>Item or null</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Responses.PageViewResponse`1">
+            <summary>Standard Page view response for get List item</summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.PageViewResponse`1.Message">
+            <summary>Message</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.PageViewResponse`1.StatusCode">
+            <summary>Status code    ///</summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Responses.ValidationErrorResponse">
+            <summary>
+            Represents a validation error response returned in case of a 400 Bad Request status with validation errors.
+            </summary>
+        </member>
+        <member name="T:snglrtycrvtureofspce.Core.Filters.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:snglrtycrvtureofspce.Core.Filters.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:snglrtycrvtureofspce.Core.Filters.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger
+            documents.</param>
+        </member>
+        <member name="M:snglrtycrvtureofspce.Core.Filters.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
         <member name="T:snglrtycrvtureofspce.Core.Filters.PathPrefixInsertDocumentFilter">
             <inheritdoc />
         </member>
@@ -25,56 +102,6 @@
         </member>
         <member name="M:snglrtycrvtureofspce.Core.Filters.SwaggerDefaultValues.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <inheritdoc />
-        </member>
-        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.IEntity">
-            <summary>
-            Base entity interface
-            </summary>
-        </member>
-        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.IResponse">
-            <summary>Interface of response</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.IResponse.Message">
-            <summary>Return Message</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.IResponse.StatusCode">
-            <summary>Status code</summary>
-        </member>
-        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1">
-            <summary>
-            Standard response of Create, Update, Get single operation
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.Message">
-            <summary>Message of operation</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.StatusCode">
-            <summary>Status code</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.ItemResponse`1.Item">
-            <summary>Item or null</summary>
-        </member>
-        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.PageView`1">
-            <summary>The page view</summary>
-            <typeparam name="TModel"></typeparam>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Page">
-            <summary>Current page</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Count">
-            <summary>Count per page</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Total">
-            <summary>Total item</summary>
-        </member>
-        <member name="P:snglrtycrvtureofspce.Core.Infrastructure.PageView`1.Elements">
-            <summary>List of elements</summary>
-        </member>
-        <member name="T:snglrtycrvtureofspce.Core.Infrastructure.ValidationErrorResponse">
-            <summary>
-            Represents a validation error response returned in case of a 400 Bad Request status with validation errors.
-            </summary>
         </member>
     </members>
 </doc>

@@ -9,7 +9,7 @@
         <Title>snglrtycrvtureofspce.Core</Title>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
         <PackageLicenseUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</RepositoryUrl>
     </PropertyGroup>
@@ -28,6 +28,9 @@
 
     <ItemGroup>
         <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     </ItemGroup>
 

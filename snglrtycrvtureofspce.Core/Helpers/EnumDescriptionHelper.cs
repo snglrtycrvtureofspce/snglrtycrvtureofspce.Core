@@ -1,0 +1,23 @@
+﻿using System.ComponentModel;
+
+namespace snglrtycrvtureofspce.Core.Helpers;
+
+public static class EnumDescriptionHelper
+{
+    public static async Task<string[]> GetEnumDescriptionsAsync(IEnumerable<Enum> enumValues)
+    {
+        var descriptionTasks = enumValues.Select(GetEnumDescriptionAsync).ToArray();
+        return await Task.WhenAll(descriptionTasks);
+    }
+
+    private static async Task<string> GetEnumDescriptionAsync(Enum value)
+    {
+        return await Task.Run(() =>
+        {
+            var field = value.GetType().GetField(value.ToString());
+            if (field == null) return value.ToString();
+            var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+            return attribute == null ? value.ToString() : attribute.Description;
+        });
+    }
+}
