@@ -12,11 +12,12 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("snglrtycrvtureofspce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.3+3c6a19c503bd84b2cefb819592d1ccaff7dae2cf")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.4.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.4+fc73278df85cde7f2a5c5dde886e545e03d01cd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("snglrtycrvtureofspce.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("snglrtycrvtureofspce.Core")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.3.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.4.0")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core")]
 
 // Создано классом WriteCodeFragment MSBuild.
 
