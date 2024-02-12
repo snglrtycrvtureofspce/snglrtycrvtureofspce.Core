@@ -9,7 +9,7 @@
         <Title>snglrtycrvtureofspce.Core</Title>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.6</Version>
+        <Version>1.0.7</Version>
         <PackageLicenseUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</RepositoryUrl>
     </PropertyGroup>
