@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
         "projectName": "snglrtycrvtureofspce.Core",
@@ -27,9 +27,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/1uM6I7vX4cj4tzy3QLO7je7ywBrSKdF1qXMdPIm1iZiOktF3ca/api/v3/index.json": {},
-          "https://nuget.pkg.jetbrains.space/solidexpert/p/scrm/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -41,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -50,6 +53,10 @@
             "Asp.Versioning.Mvc.ApiExplorer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.11, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -84,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

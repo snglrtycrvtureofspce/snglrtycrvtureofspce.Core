@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+cZAaO4tbEJJnPVg4k5ucbgOpGR8/BkMYJHKeLU4F7mXrbq/alz+6ae3pZTv9bYeQFDOQgSDH4FhLwXLtOdy4w==",
+  "dgSpecHash": "+JgLteXn993AmVTiI2l0cm4FHFLB+jPvP+sfLKHsz4+o78l/JDH5fYStkD5RiO3kDK/CjihFh31UgyIAgPacsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,11 @@
     "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.http\\8.0.0\\asp.versioning.http.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.mvc\\8.0.0\\asp.versioning.mvc.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.0.0\\asp.versioning.mvc.apiexplorer.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\hangfire\\1.8.11\\hangfire.1.8.11.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\hangfire.aspnetcore\\1.8.11\\hangfire.aspnetcore.1.8.11.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\hangfire.core\\1.8.11\\hangfire.core.1.8.11.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\hangfire.netcore\\1.8.11\\hangfire.netcore.1.8.11.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\hangfire.sqlserver\\1.8.11\\hangfire.sqlserver.1.8.11.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
@@ -21,6 +26,8 @@
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.0.0\\microsoft.extensions.fileproviders.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\3.0.0\\microsoft.extensions.hosting.abstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\asp1r\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
