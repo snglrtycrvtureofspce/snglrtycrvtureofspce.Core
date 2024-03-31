@@ -34,6 +34,23 @@
         <member name="P:snglrtycrvtureofspce.Core.Base.Infrastructure.PageView`1.Elements">
             <summary>List of elements</summary>
         </member>
+        <member name="T:snglrtycrvtureofspce.Core.Base.Responses.AuthResponse">
+            <summary>
+            Standard authentication response of Create, Update, Get single operation
+            </summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.AuthResponse.Username">
+            <summary>Username</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.AuthResponse.Email">
+            <summary>Email</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.AuthResponse.Token">
+            <summary>Token</summary>
+        </member>
+        <member name="P:snglrtycrvtureofspce.Core.Base.Responses.AuthResponse.RefreshToken">
+            <summary>Refresh token</summary>
+        </member>
         <member name="T:snglrtycrvtureofspce.Core.Base.Responses.ItemResponse`1">
             <summary>
             Standard response of Create, Update, Get single operation

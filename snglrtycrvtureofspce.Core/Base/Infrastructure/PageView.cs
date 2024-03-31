@@ -1,4 +1,6 @@
-﻿namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
+﻿using System.Collections.Generic;
+
+namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 
 /// <summary>The page view</summary>
 /// <typeparam name="TModel"></typeparam>

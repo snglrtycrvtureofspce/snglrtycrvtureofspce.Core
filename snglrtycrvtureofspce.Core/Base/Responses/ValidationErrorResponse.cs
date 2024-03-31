@@ -1,4 +1,6 @@
-﻿namespace snglrtycrvtureofspce.Core.Base.Responses;
+﻿using System.Collections.Generic;
+
+namespace snglrtycrvtureofspce.Core.Base.Responses;
 
 /// <summary>
 /// Represents a validation error response returned in case of a 400 Bad Request status with validation errors.

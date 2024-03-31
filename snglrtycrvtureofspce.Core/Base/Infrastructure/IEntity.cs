@@ -1,4 +1,6 @@
-﻿namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
+﻿using System;
+
+namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 
 /// <summary>
 /// Base entity interface
