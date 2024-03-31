@@ -12,11 +12,13 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("snglrtycrvtureofspce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.9.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.9+0ec9bcce2ac20afd88872e7ca8c19d4e0c833452")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("snglrtycrvtureofspce")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("Simple SDK for ASP.NET Core")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.11.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.11+ce570310d9ac176488adcc9f527adf4b8db01ac9")]
 [assembly: System.Reflection.AssemblyProductAttribute("snglrtycrvtureofspce.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("snglrtycrvtureofspce.Core")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.9.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.11.0")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core")]
 
 // Создано классом WriteCodeFragment MSBuild.

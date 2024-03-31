@@ -1,18 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <TargetFrameworks>net8.0;net6.0;net7.0</TargetFrameworks>
         <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
         <OutputType>Library</OutputType>
-        <Authors>snglrtycrvtureofspce</Authors>
-        <Title>snglrtycrvtureofspce.Core</Title>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.9</Version>
-        <PackageLicenseUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core/blob/main/LICENSE</PackageLicenseUrl>
+        <Version>1.0.11</Version>
+        <Authors>snglrtycrvtureofspce</Authors>
+        <Title>snglrtycrvtureofspce.Core</Title>
+        <Description>Simple SDK for ASP.NET Core</Description>
+        <Copyright>snglrtycrvtureofspce</Copyright>
+        <PackageIcon>snglrtycrvtureofspce_128x128.png</PackageIcon>
+        <PackageTags>snglrtycrvtureofspce</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</RepositoryUrl>
-        <TargetFrameworks>net8.0;net6.0;net7.0</TargetFrameworks>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="assets\logo\snglrtycrvtureofspce_128x128.png" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <DocumentationFile>bin\Debug\snglrtycrvtureofspce.Core.xml</DocumentationFile>
@@ -27,15 +39,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.4.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.28" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.28" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Properties\launchSettings.json" />
     </ItemGroup>
 
 </Project>

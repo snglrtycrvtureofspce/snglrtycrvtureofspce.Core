@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\GitHub\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj": {
-      "version": "1.0.9",
+      "version": "1.0.11",
       "restore": {
         "projectUniqueName": "C:\\Users\\asp1r\\OneDrive\\Документы\\snglrtycrvtureofspce\\Git\\GitHub\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core\\snglrtycrvtureofspce.Core.csproj",
         "projectName": "snglrtycrvtureofspce.Core",
@@ -63,15 +63,15 @@
           "dependencies": {
             "Asp.Versioning.Mvc.ApiExplorer": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -105,15 +105,15 @@
           "dependencies": {
             "Asp.Versioning.Mvc.ApiExplorer": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -147,15 +147,15 @@
           "dependencies": {
             "Asp.Versioning.Mvc.ApiExplorer": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.28, )"
+              "version": "[6.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

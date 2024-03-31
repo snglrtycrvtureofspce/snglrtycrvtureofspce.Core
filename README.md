@@ -4,10 +4,9 @@ snglrtycrvtureofspce.Core
 [![NuGet](https://img.shields.io/nuget/dt/snglrtycrvtureofspce.Core.svg)](https://www.nuget.org/packages/snglrtycrvtureofspce.Core)
 [![NuGet](https://img.shields.io/nuget/vpre/snglrtycrvtureofspce.Core.svg)](https://www.nuget.org/packages/snglrtycrvtureofspce.Core)
 
-# Frameworks
-* .NET 6.0 or higher
+Simple SDK for ASP.NET Core
 
-### Installing snglrtycrvtureofspce.Core
+# Installing snglrtycrvtureofspce.Core
 
 You should install [snglrtycrvtureofspce.Core with NuGet](https://www.nuget.org/packages/snglrtycrvtureofspce.Core):
 
