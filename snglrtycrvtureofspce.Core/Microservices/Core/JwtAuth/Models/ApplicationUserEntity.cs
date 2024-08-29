@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Models;
 
-public class ApplicationUserEntity : IdentityUser<Guid>
+public class UserEntity : IdentityUser<Guid>
 {
     public string? RefreshToken { get; set; }
     

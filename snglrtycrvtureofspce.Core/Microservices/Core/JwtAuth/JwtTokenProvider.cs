@@ -14,7 +14,7 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth;
 
 public static class JwtTokenProvider
 {
-    public static string GenerateJwtToken(this ApplicationUserEntity user, IEnumerable<IdentityRole<Guid>> roles)
+    public static string GenerateJwtToken(this UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
     {
         List<Claim> claimList = new List<Claim>
         {
@@ -48,6 +48,6 @@ public static class JwtTokenProvider
 
     public static string GenerateSystemToken(SystemUsersEnumeration user)
     {
-        return GenerateJwtToken(new ApplicationUserEntity { UserName = "System" }, Enumerable.Empty<IdentityRole<Guid>>());
+        return GenerateJwtToken(new UserEntity { UserName = "System" }, Enumerable.Empty<IdentityRole<Guid>>());
     }
 }
