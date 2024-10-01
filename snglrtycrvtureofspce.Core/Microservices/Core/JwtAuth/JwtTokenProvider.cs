@@ -27,7 +27,7 @@ public static class JwtTokenProvider
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthOptions.JwtKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var expires = DateTime.Now.AddDays(30);
 
@@ -37,7 +37,7 @@ public static class JwtTokenProvider
             claims: claimList,
             notBefore: null,
             expires: expires,
-            signingCredentials: creds);
+            signingCredentials: signingCredentials);
 
         return new JwtSecurityTokenHandler().WriteToken(token);}
 

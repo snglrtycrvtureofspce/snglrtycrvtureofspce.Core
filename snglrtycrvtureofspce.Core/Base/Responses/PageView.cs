@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
+namespace snglrtycrvtureofspce.Core.Base.Responses;
 
 /// <summary>The page view</summary>
 /// <typeparam name="TModel"></typeparam>
