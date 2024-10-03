@@ -10,8 +10,9 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using snglrtycrvtureofspce.Core.Base.Infrastructure;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Attributes;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 
 public class RabbitManager(IPooledObjectPolicy<IModel> objectPolicy) : IRabbitManager
 {

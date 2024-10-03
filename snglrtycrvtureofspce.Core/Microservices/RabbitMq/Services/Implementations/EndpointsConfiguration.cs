@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 
 public class EndpointsConfiguration : IEndpointsConfiguration
 {
     public IEndpointConfiguration MapEndpoint<T>(string queue, bool durable = true, bool exclusive = false, 
         bool autoDelete = false, IDictionary<string, object> arguments = null)
     {
-        EndpointConfiguration<T> endpointConfiguration = new EndpointConfiguration<T>()
+        EndpointConfiguration<T> endpointConfiguration = new EndpointConfiguration<T>
         {
             Queue = queue,
             Durable = durable,

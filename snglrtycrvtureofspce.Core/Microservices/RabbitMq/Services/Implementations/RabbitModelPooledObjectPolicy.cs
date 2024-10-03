@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.ObjectPool;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 
 public class RabbitModelPooledObjectPolicy : IPooledObjectPolicy<IModel>
 {

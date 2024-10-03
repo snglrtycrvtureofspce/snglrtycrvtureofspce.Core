@@ -5,16 +5,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 
 public class RabbitMqHostedService : BackgroundService
 {
     private readonly IList<IBus> _wrappers;
 
-    public RabbitMqHostedService(
-        IServiceProvider services,
-        IOptions<RabbitMqConfiguration> options,
+    public RabbitMqHostedService(IServiceProvider services, IOptions<RabbitMqConfiguration> options, 
         IEndpointsConfiguration configuration)
     {
         _wrappers = (IList<IBus>) configuration.Endpoints

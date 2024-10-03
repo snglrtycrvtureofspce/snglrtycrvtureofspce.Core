@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
 public interface IBus
 {

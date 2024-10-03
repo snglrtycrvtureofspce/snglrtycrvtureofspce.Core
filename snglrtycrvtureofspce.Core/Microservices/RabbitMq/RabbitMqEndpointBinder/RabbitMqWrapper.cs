@@ -8,6 +8,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
 namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.RabbitMqEndpointBinder;
 

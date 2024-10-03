@@ -46,7 +46,7 @@ public static class ServiceCollectionExtension
                 Title = assemblyName + " API",
                 Version = "v3"
             });
-            string baseDirectory = AppContext.BaseDirectory;
+            var baseDirectory = AppContext.BaseDirectory;
             c.IncludeXmlComments(baseDirectory + assemblyName + ".xml");
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using snglrtycrvtureofspce.Core.Base.Infrastructure;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
 public interface IRabbitManager
 {

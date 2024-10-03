@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.RabbitMqEndpointBinder;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 
 public class EndpointConfiguration<T> : IEndpointConfiguration
 {

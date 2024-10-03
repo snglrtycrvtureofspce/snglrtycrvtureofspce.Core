@@ -3,8 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.ObjectPool;
 using RabbitMQ.Client;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
+using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
-namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Extensions;
 
 public static class RabbitServiceCollectionExtensions
 {

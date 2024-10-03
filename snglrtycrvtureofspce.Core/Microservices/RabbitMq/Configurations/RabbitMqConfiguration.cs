@@ -1,4 +1,4 @@
-﻿namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq;
+﻿namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 
 public class RabbitMqConfiguration
 {
