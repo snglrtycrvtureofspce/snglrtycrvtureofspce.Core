@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using snglrtycrvtureofspce.Core.Base.ComplexTypes;
 using snglrtycrvtureofspce.Core.Microservices.Core.Infrastructure.Authorization;
-using snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Models;
+using snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
 
 namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth;
 
