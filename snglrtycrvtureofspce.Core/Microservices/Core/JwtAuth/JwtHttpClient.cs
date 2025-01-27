@@ -11,13 +11,10 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth;
 
 public class JwtHttpClient : HttpClient
 {
-    public JwtHttpClient(string hostUrl) : base((HttpMessageHandler) 
-        new HttpClientHandler
-        {
-            ServerCertificateCustomValidationCallback = 
-                (Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool>) 
-                ((sender, certificate, chain, sslPolicyErrors) => true)
-        })
+    public JwtHttpClient(string hostUrl) : base(new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true
+    })
     {
         Timeout = TimeSpan.FromMinutes(1.0);
         DefaultRequestHeaders.Add("Accept", "application/json");
@@ -26,28 +23,41 @@ public class JwtHttpClient : HttpClient
         BaseAddress = new Uri(hostUrl);
     }
 
-    public JwtHttpClient(string hostUrl, IHttpContextAccessor accessor) : base((HttpMessageHandler) 
-        new HttpClientHandler
-        {
-            ServerCertificateCustomValidationCallback = 
-                (Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool>) 
-                ((sender, certificate, chain, sslPolicyErrors) => true)
-        })
+    public JwtHttpClient(string hostUrl, IHttpContextAccessor accessor) : base(new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true
+    })
     {
         Timeout = TimeSpan.FromMinutes(1.0);
         DefaultRequestHeaders.Add("Accept", "application/json");
-        try
+        
+        if (accessor?.HttpContext != null && accessor.HttpContext.Request.Headers.ContainsKey("Authorization"))
         {
-            DefaultRequestHeaders.Add("Authorization", (IEnumerable<string>) new string[1]
+            var authHeader = accessor.HttpContext.Request.Headers["Authorization"].ToString();
+            if (!string.IsNullOrEmpty(authHeader))
             {
-                (string) accessor.HttpContext.Request.Headers["Authorization"]
-            });
+                DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(authHeader);
+            }
+            else
+            {
+                SetSystemToken();
+            }
         }
-        catch (Exception ex)
+        else
         {
-            DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", 
-                JwtTokenProvider.GenerateSystemToken(SystemUsersEnumeration.SystemMessage));
+            SetSystemToken();
         }
+
         BaseAddress = new Uri(hostUrl);
+    }
+
+    private void SetSystemToken()
+    {
+        var systemToken = JwtTokenProvider.GenerateSystemToken(SystemUsersEnumeration.SystemMessage);
+        if (string.IsNullOrEmpty(systemToken))
+        {
+            throw new InvalidOperationException("Failed to generate system token.");
+        }
+        DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", systemToken);
     }
 }
