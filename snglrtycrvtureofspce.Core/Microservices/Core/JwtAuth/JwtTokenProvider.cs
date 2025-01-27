@@ -14,7 +14,7 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth;
 
 public static class JwtTokenProvider
 {
-    public static string GenerateJwtToken(this UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
+    public static string GenerateJwtToken(UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
     {
         List<Claim> claimList = new List<Claim>
         {
@@ -39,15 +39,31 @@ public static class JwtTokenProvider
             expires: expires,
             signingCredentials: signingCredentials);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);}
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 
     public static string GenerateSystemToken()
     {
-        return JwtTokenProvider.GenerateSystemToken(SystemUsersEnumeration.SystemMessage);
+        return GenerateSystemToken(SystemUsersEnumeration.SystemMessage);
     }
 
     public static string GenerateSystemToken(SystemUsersEnumeration user)
     {
-        return GenerateJwtToken(new UserEntity { UserName = "System" }, Enumerable.Empty<IdentityRole<Guid>>());
+        var systemUser = new UserEntity
+        {
+            Id = Guid.NewGuid(),
+            UserName = "System",
+            Email = "system@snglrtycrvtureofspce.me",
+            FirstName = "System",
+            LastName = "System",
+            MiddleName = "System",
+            DateOfBirth = DateTime.UtcNow.AddYears(-30),
+            Country = "System",
+            City = "System",
+            Language = "System",
+            Agreement = true
+        };
+
+        return GenerateJwtToken(systemUser, Enumerable.Empty<IdentityRole<Guid>>());
     }
 }

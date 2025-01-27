@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Http;
 using snglrtycrvtureofspce.Core.Base.ComplexTypes;
 
@@ -18,19 +15,12 @@ public class JwtHttpClient : HttpClient
     {
         Timeout = TimeSpan.FromMinutes(1.0);
         DefaultRequestHeaders.Add("Accept", "application/json");
-        DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", 
-            JwtTokenProvider.GenerateSystemToken(SystemUsersEnumeration.SystemMessage));
+        SetSystemToken();
         BaseAddress = new Uri(hostUrl);
     }
 
-    public JwtHttpClient(string hostUrl, IHttpContextAccessor accessor) : base(new HttpClientHandler
+    public JwtHttpClient(string hostUrl, IHttpContextAccessor accessor) : this(hostUrl)
     {
-        ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true
-    })
-    {
-        Timeout = TimeSpan.FromMinutes(1.0);
-        DefaultRequestHeaders.Add("Accept", "application/json");
-        
         if (accessor?.HttpContext != null && accessor.HttpContext.Request.Headers.ContainsKey("Authorization"))
         {
             var authHeader = accessor.HttpContext.Request.Headers["Authorization"].ToString();
@@ -38,17 +28,7 @@ public class JwtHttpClient : HttpClient
             {
                 DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(authHeader);
             }
-            else
-            {
-                SetSystemToken();
-            }
         }
-        else
-        {
-            SetSystemToken();
-        }
-
-        BaseAddress = new Uri(hostUrl);
     }
 
     private void SetSystemToken()
