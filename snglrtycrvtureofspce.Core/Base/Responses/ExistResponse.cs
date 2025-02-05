@@ -8,9 +8,6 @@ public class ExistResponse : IResponse
     /// <summary>Return Message</summary>
     public string Message { get; set; }
 
-    /// <summary>Status code</summary>
-    public int StatusCode { get; set; }
-
     /// <summary>Condition</summary>
     public bool Exist { get; init; }
 }
