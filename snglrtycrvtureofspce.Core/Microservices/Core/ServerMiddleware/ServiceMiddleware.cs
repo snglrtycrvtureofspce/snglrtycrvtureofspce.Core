@@ -14,7 +14,7 @@ public static class ServiceMiddleware
 {
     public static void AddServerControllers(this IServiceCollection services)
     {
-        services.AddCors();
+        services.AddHttpContextAccessor();
         services.AddControllers().AddNewtonsoftJson((Action<MvcNewtonsoftJsonOptions>) (opt =>
         {
             opt.SerializerSettings.Formatting = Formatting.Indented;
