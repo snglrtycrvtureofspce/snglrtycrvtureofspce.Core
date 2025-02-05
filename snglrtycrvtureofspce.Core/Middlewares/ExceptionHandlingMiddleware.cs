@@ -2,10 +2,12 @@
 using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using snglrtycrvtureofspce.Core.Exceptions;
 
 namespace snglrtycrvtureofspce.Core.Middlewares;
 
-public class ExceptionHandlingMiddleware(RequestDelegate next)
+public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
 {
     public async Task InvokeAsync(HttpContext context)
     {
@@ -15,39 +17,25 @@ public class ExceptionHandlingMiddleware(RequestDelegate next)
         }
         catch (ValidationException ex)
         {
-            await HandleValidationExceptionAsync(context, ex);
+            await HandleExceptionAsync(context, StatusCodes.Status400BadRequest, "Validation error.", ex.Errors);
+        }
+        catch (NotFoundException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status404NotFound, ex.Message);
         }
         catch (Exception ex)
         {
-            await HandleGlobalExceptionAsync(context, ex);
+            logger.LogError(ex, "Unexpected error occurred.");
+            await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
         }
     }
 
-    private static Task HandleValidationExceptionAsync(HttpContext context, ValidationException ex)
+    private static Task HandleExceptionAsync(HttpContext context, int statusCode, string message, object? details = null)
     {
         context.Response.ContentType = "application/json";
-        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+        context.Response.StatusCode = statusCode;
 
-        var response = new
-        {
-            message = "Validation error",
-            details = ex.Errors
-        };
-
-        return context.Response.WriteAsJsonAsync(response);
-    }
-
-    private static Task HandleGlobalExceptionAsync(HttpContext context, Exception ex)
-    {
-        context.Response.ContentType = "application/json";
-        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-
-        var response = new
-        {
-            message = "An unexpected error occurred",
-            details = ex.Message
-        };
-
+        var response = new { message, details };
         return context.Response.WriteAsJsonAsync(response);
     }
 }
