@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using snglrtycrvtureofspce.Core.Exceptions;
 
@@ -22,6 +23,34 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         catch (NotFoundException ex)
         {
             await HandleExceptionAsync(context, StatusCodes.Status404NotFound, ex.Message);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status401Unauthorized, "Unauthorized.", ex.Message);
+        }
+        catch (ForbiddenAccessException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status403Forbidden, "Forbidden.", ex.Message);
+        }
+        catch (TimeoutException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status408RequestTimeout, "Request timed out.", ex.Message);
+        }
+        catch (DbUpdateException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError, "Database error.", ex.InnerException?.Message ?? ex.Message);
+        }
+        catch (OperationCanceledException)
+        {
+            context.Response.StatusCode = 499;
+        }
+        catch (ConflictException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status409Conflict, "Conflict.", ex.Message);
+        }
+        catch (NotImplementedException)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status501NotImplemented, "Not implemented.");
         }
         catch (Exception ex)
         {
