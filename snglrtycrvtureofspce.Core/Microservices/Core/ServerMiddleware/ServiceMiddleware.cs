@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
 
 namespace snglrtycrvtureofspce.Core.Microservices.Core.ServerMiddleware;
 
@@ -24,19 +25,12 @@ public static class ServiceMiddleware
         }));
     }
 
-    public static Guid GetUserId(this IEnumerable<Claim> claims)
-    {
-        return Guid.Parse((claims.SingleOrDefault<Claim>((Func<Claim, bool>) (s => s.Type == "UserId")) ?? 
-                           throw new UnauthorizedAccessException()).Value);
-    }
+    public static Guid GetUserId(this IEnumerable<Claim> claims) => 
+        Guid.Parse((claims.SingleOrDefault((Func<Claim, bool>) (s => s.Type == "UserId")) 
+                    ?? throw new UnauthorizedAccessException()).Value);
 
-    public static bool IsInRootAdmin(this ControllerBase controller)
-    {
-        return controller.User.IsInRole("Administrator");
-    }
+    public static bool IsInRootAdmin(this ControllerBase controller) => controller.User.IsInRole(RoleType.Administrator);
 
-    public static string GetMicroserviceHost(this IConfiguration configuration, string name)
-    {
-        return configuration?.GetSection("ServicesHosts")?[name];
-    }
+    public static string GetMicroserviceHost(this IConfiguration configuration, string name) => 
+        configuration?.GetSection("ServicesHosts")?[name];
 }

@@ -16,7 +16,7 @@ public static class JwtTokenProvider
 {
     public static string GenerateJwtToken(UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
     {
-        List<Claim> claimList = new List<Claim>
+        var claims = new List<Claim>
         {
             new Claim("UserId", user.Id.ToString()),
             new Claim("Username", user.UserName),
@@ -34,7 +34,7 @@ public static class JwtTokenProvider
         var token = new JwtSecurityToken(
             issuer: "snglrtycrvtureofspce",
             audience: "snglrtycrvtureofspce",
-            claims: claimList,
+            claims: claims,
             notBefore: null,
             expires: expires,
             signingCredentials: signingCredentials);
@@ -42,10 +42,7 @@ public static class JwtTokenProvider
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public static string GenerateSystemToken()
-    {
-        return GenerateSystemToken(SystemUsersEnumeration.SystemMessage);
-    }
+    public static string GenerateSystemToken() => GenerateSystemToken(SystemUsersEnumeration.SystemMessage);
 
     public static string GenerateSystemToken(SystemUsersEnumeration user)
     {

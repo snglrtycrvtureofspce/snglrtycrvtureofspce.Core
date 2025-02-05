@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Filters;
 using snglrtycrvtureofspce.Core.Errors;
-using snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities.Enums;
+using snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
 
 namespace snglrtycrvtureofspce.Core.Filters;
 
