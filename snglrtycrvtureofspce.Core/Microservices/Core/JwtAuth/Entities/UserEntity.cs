@@ -8,9 +8,11 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
 public class UserEntity : IdentityUser<Guid>, IEntity
 {
     #region IEntity
+    
     public DateTime CreatedDate { get; set; }
     
     public DateTime ModificationDate { get; set; }
+    
     #endregion
     
     public string? RefreshToken { get; set; }

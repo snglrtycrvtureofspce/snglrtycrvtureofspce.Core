@@ -2,20 +2,12 @@
 
 namespace snglrtycrvtureofspce.Core.Base.ComplexTypes;
 
-public class SystemUsersEnumeration : TypeEnumeration
+public class SystemUsersEnumeration(string value, Guid id) : TypeEnumeration(value)
 {
     public static readonly SystemUsersEnumeration SystemMessage =
-        new SystemUsersEnumeration(nameof(SystemMessage), Guid.Parse("00000000-0000-0000-0001-000000000000"));
+        new(nameof(SystemMessage), Guid.Parse("00000000-0000-0000-0001-000000000000"));
 
-    public Guid Identificator { get; set; }
+    private Guid Identifier { get; set; } = id;
 
-    public SystemUsersEnumeration(string value, Guid id) : base(value)
-    {
-        Identificator = id;
-    }
-
-    public override bool Equals(object obj)
-    {
-        return Identificator.Equals(((SystemUsersEnumeration)obj).Identificator);
-    }
+    public override bool Equals(object obj) => Identifier.Equals(((SystemUsersEnumeration)obj)!.Identifier);
 }

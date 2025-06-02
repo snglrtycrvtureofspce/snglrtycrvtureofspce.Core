@@ -13,8 +13,5 @@ public class TestAsyncEnumerator<T>(IEnumerator<T> inner) : IAsyncEnumerator<T>
         return ValueTask.CompletedTask;
     }
 
-    public ValueTask<bool> MoveNextAsync()
-    {
-        return new ValueTask<bool>(inner.MoveNext());
-    }
+    public ValueTask<bool> MoveNextAsync() => new(inner.MoveNext());
 }

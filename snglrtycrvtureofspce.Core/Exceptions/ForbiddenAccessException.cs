@@ -2,7 +2,4 @@
 
 namespace snglrtycrvtureofspce.Core.Exceptions;
 
-public class ForbiddenAccessException : Exception
-{
-    public ForbiddenAccessException(string message = "Access denied") : base(message) { }
-}
+public class ForbiddenAccessException(string message = "Access denied") : Exception(message);

@@ -9,19 +9,19 @@ namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementati
 
 public class EndpointConfiguration<T> : IEndpointConfiguration
 {
-    public string Queue { get; set; }
+    public string Queue { get; init; }
 
-    public bool Durable { get; set; }
+    public bool Durable { get; init; }
 
-    public bool Exclusive { get; set; }
+    public bool Exclusive { get; init; }
 
-    public bool AutoDelete { get; set; }
+    public bool AutoDelete { get; init; }
 
-    public IDictionary<string, object> Arguments { get; set; }
+    public IDictionary<string, object> Arguments { get; init; }
 
-    public string Exchange { get; set; }
+    public string Exchange { get; private set; }
 
-    public string RoutingKey { get; set; }
+    public string RoutingKey { get; private set; }
 
     public void WithBinding(string exchange, string routingKey)
     {
@@ -29,8 +29,6 @@ public class EndpointConfiguration<T> : IEndpointConfiguration
         RoutingKey = routingKey;
     }
 
-    public IBus BuildWrapper(IServiceProvider services, IOptions<RabbitMqConfiguration> options)
-    {
-        return new RabbitMqWrapper<T>(options, this, services);
-    }
+    public IBus BuildWrapper(IServiceProvider services, IOptions<RabbitMqConfiguration> options) =>
+        new RabbitMqWrapper<T>(options, this, services);
 }

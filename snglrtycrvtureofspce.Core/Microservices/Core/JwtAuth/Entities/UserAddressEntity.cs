@@ -6,11 +6,13 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
 public sealed class UserAddressEntity : IEntity
 {
     #region IEntity
+    
     public Guid Id { get; set; }
     
     public DateTime CreatedDate { get; set; }
     
     public DateTime ModificationDate { get; set; }
+    
     #endregion
     
     public string Country { get; set; }

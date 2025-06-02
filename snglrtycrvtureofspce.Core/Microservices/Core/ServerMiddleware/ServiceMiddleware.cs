@@ -15,7 +15,7 @@ public static class ServiceMiddleware
     public static void AddServerControllers(this IServiceCollection services)
     {
         services.AddHttpContextAccessor();
-        services.AddControllers().AddNewtonsoftJson((Action<MvcNewtonsoftJsonOptions>) (opt =>
+        services.AddControllers().AddNewtonsoftJson((Action<MvcNewtonsoftJsonOptions>)(opt =>
         {
             opt.SerializerSettings.Formatting = Formatting.Indented;
             opt.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
@@ -25,12 +25,13 @@ public static class ServiceMiddleware
         }));
     }
 
-    public static Guid GetUserId(this IEnumerable<Claim> claims) => 
-        Guid.Parse((claims.SingleOrDefault((Func<Claim, bool>) (s => s.Type == "UserId")) 
-                    ?? throw new UnauthorizedAccessException()).Value);
+    public static Guid GetUserId(this IEnumerable<Claim> claims)
+        => Guid.Parse((claims.SingleOrDefault((Func<Claim, bool>)(s => s.Type == "UserId"))
+                       ?? throw new UnauthorizedAccessException()).Value);
 
-    public static bool IsInRootAdmin(this ControllerBase controller) => controller.User.IsInRole(RoleType.Administrator);
+    public static bool IsInRootAdmin(this ControllerBase controller) =>
+        controller.User.IsInRole(RoleType.Administrator);
 
-    public static string GetMicroserviceHost(this IConfiguration configuration, string name) => 
+    public static string GetMicroserviceHost(this IConfiguration configuration, string name) =>
         configuration?.GetSection("ServicesHosts")?[name];
 }

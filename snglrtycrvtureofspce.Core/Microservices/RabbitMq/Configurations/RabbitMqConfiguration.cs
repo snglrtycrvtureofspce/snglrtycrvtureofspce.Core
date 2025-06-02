@@ -2,15 +2,15 @@
 
 public class RabbitMqConfiguration
 {
-    public string Hostname { get; set; }
+    public string Hostname { get; init; }
     
-    public string QueueName { get; set; }
+    public string QueueName { get; init; }
     
-    public string UserName { get; set; }
+    public string UserName { get; init; }
     
-    public string Password { get; set; }
+    public string Password { get; init; }
     
-    public int Port { get; set; }
+    public int Port { get; init; }
     
-    public string VHost { get; set; }
+    public string VHost { get; init; }
 }

@@ -8,10 +8,12 @@ namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 public interface IEntity
 {
     #region IEntity
+    
     Guid Id { get; set; }
     
     DateTime CreatedDate { get; set; }
     
     DateTime ModificationDate { get; set; }
+    
     #endregion
 }

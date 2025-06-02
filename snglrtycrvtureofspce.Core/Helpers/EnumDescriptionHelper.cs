@@ -14,14 +14,12 @@ public static class EnumDescriptionHelper
         return await Task.WhenAll(descriptionTasks);
     }
 
-    private static async Task<string> GetEnumDescriptionAsync(Enum value)
-    {
-        return await Task.Run(() =>
+    private static async Task<string> GetEnumDescriptionAsync(Enum value) =>
+        await Task.Run(() =>
         {
             var field = value.GetType().GetField(value.ToString());
             if (field == null) return value.ToString();
             var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
             return attribute == null ? value.ToString() : attribute.Description;
         });
-    }
 }

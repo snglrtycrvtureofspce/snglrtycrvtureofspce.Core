@@ -16,65 +16,65 @@ namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.RabbitMqEndpointBinde
 
 public class RabbitMqWrapper<T> : IBus
 {
-  private readonly IModel _channel;
-  private readonly IConnection _connection;
-  private readonly string _queue;
-  private readonly IServiceProvider _serviceProvider;
+    private readonly IModel _channel;
+    private readonly IConnection _connection;
+    private readonly string _queue;
+    private readonly IServiceProvider _serviceProvider;
 
-  public RabbitMqWrapper(IOptions<RabbitMqConfiguration> options, EndpointConfiguration<T> configuration, 
-    IServiceProvider services)
-  {
-    _serviceProvider = services;
-    _connection = new ConnectionFactory
+    public RabbitMqWrapper(IOptions<RabbitMqConfiguration> options, EndpointConfiguration<T> configuration,
+        IServiceProvider services)
     {
-      HostName = options.Value.Hostname,
-      UserName = options.Value.UserName,
-      Password = options.Value.Password,
-      Port = -1,
-      VirtualHost = options.Value.VHost
-    }.CreateConnection();
-    _channel = _connection.CreateModel();
-    _queue = configuration.Queue;
-    _channel.QueueDeclare(_queue, configuration.Durable, configuration.Exclusive, configuration.AutoDelete,
-      configuration.Arguments);
-    _channel.QueueBind(configuration.Queue, configuration.Exchange, configuration.RoutingKey);
-  }
-
-  public Task ExecuteAsync(CancellationToken stoppingToken)
-  {
-    EventingBasicConsumer consumer = new EventingBasicConsumer(_channel);
-    consumer.Received += (EventHandler<BasicDeliverEventArgs>)(async (_, ea) =>
-    {
-      var content = Encoding.UTF8.GetString(ea.Body.ToArray());
-      try
-      {
-        IMediator mediator;
-        T message;
-        using (IServiceScope scope = _serviceProvider.CreateScope())
+        _serviceProvider = services;
+        _connection = new ConnectionFactory
         {
-          mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-          message = JsonConvert.DeserializeObject<T>(content);
-          object obj = await mediator.Send((object)message, stoppingToken);
-        }
+            HostName = options.Value.Hostname,
+            UserName = options.Value.UserName,
+            Password = options.Value.Password,
+            Port = -1,
+            VirtualHost = options.Value.VHost
+        }.CreateConnection();
+        _channel = _connection.CreateModel();
+        _queue = configuration.Queue;
+        _channel.QueueDeclare(_queue, configuration.Durable, configuration.Exclusive, configuration.AutoDelete,
+            configuration.Arguments);
+        _channel.QueueBind(configuration.Queue, configuration.Exchange, configuration.RoutingKey);
+    }
 
-        mediator = (IMediator)null;
-        message = default(T);
-      }
-      finally
-      {
-        _channel.BasicAck(ea.DeliveryTag, false);
-      }
+    public Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        EventingBasicConsumer consumer = new EventingBasicConsumer(_channel);
+        consumer.Received += (EventHandler<BasicDeliverEventArgs>)(async (_, ea) =>
+        {
+            var content = Encoding.UTF8.GetString(ea.Body.ToArray());
+            try
+            {
+                IMediator mediator;
+                T message;
+                using (IServiceScope scope = _serviceProvider.CreateScope())
+                {
+                    mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+                    message = JsonConvert.DeserializeObject<T>(content);
+                    object obj = await mediator.Send((object)message, stoppingToken);
+                }
 
-      content = (string)null;
-    });
-    _channel.BasicConsume(_queue, false, (IBasicConsumer)consumer);
+                mediator = (IMediator)null;
+                message = default(T);
+            }
+            finally
+            {
+                _channel.BasicAck(ea.DeliveryTag, false);
+            }
 
-    return Task.CompletedTask;
-  }
+            content = (string)null;
+        });
+        _channel.BasicConsume(_queue, false, (IBasicConsumer)consumer);
 
-  public void Dispose()
-  {
-    _channel.Close();
-    _connection.Close();
-  }
+        return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        _channel.Close();
+        _connection.Close();
+    }
 }

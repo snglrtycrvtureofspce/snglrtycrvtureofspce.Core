@@ -24,7 +24,7 @@ public static class RabbitServiceCollectionExtensions
     public static void AddRabbitMqEndpoints(this IServiceCollection services, 
         Action<EndpointsConfiguration> configuration)
     {
-        EndpointsConfiguration implementationInstance = new EndpointsConfiguration();
+        var implementationInstance = new EndpointsConfiguration();
         configuration(implementationInstance);
         services.AddSingleton<IEndpointsConfiguration>((IEndpointsConfiguration) implementationInstance);
         services.AddHostedService<RabbitMqHostedService>();
