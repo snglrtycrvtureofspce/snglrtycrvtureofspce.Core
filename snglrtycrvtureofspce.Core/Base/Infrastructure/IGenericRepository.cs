@@ -28,25 +28,25 @@ public interface IGenericRepository<T> where T : class, IEntity
     /// </summary>
     ValueTask<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken = default);
     
-    /// <summary>
+    /*/// <summary>
     /// Returns entities that satisfy the condition.
     /// </summary>
     ValueTask<IReadOnlyList<T>> FindAsync(
         Expression<Func<T, bool>> predicate,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default);*/
     
-    /// <summary>
+    /*/// <summary>
     /// Returns the projection of the entities.
     /// </summary>
     ValueTask<IReadOnlyList<TResult>> SelectAsync<TResult>(
         Expression<Func<T, bool>> predicate,
         Expression<Func<T, TResult>> selector,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default);*/
     
-    /// <summary>
+    /*/// <summary>
     /// Allows you to get an IQueryable to build complex queries.
     /// </summary>
-    IQueryable<T> AsQueryable();
+    IQueryable<T> AsQueryable();*/
     
     /// <summary>
     /// Updates the entity.
