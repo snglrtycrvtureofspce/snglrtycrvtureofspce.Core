@@ -3,15 +3,13 @@
 namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 
 /// <summary>
-/// Base auditable interface
+/// Represents an auditable entity with user tracking.
 /// </summary>
 public interface IAuditable : IEntity
 {
-    #region IAuditable
+    /// <summary>Identifier of the user who created the entity.</summary>
+    Guid CreatedBy { get; set; }
     
-    public Guid CreatedBy { get; set; }
-    
-    public Guid ModifiedBy { get; set; }
-    
-    #endregion
+    /// <summary>Identifier of the user who last modified the entity.</summary>
+    Guid ModifiedBy { get; set; }
 }

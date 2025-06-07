@@ -2,19 +2,21 @@
 
 namespace snglrtycrvtureofspce.Core.Base.Responses;
 
-/// <summary>The page view</summary>
-/// <typeparam name="TModel"></typeparam>
+/// <summary>
+/// Represents a paginated view of items.
+/// </summary>
+/// <typeparam name="TModel">The type of items in the page.</typeparam>
 public class PageView<TModel> where TModel : class
 {
-    /// <summary>Current page</summary>
+    /// <summary>Current page number (1-based).</summary>
     public int Page { get; set; }
 
-    /// <summary>Count per page</summary>
+    /// <summary>Number of items per page.</summary>
     public int Count { get; set; }
 
-    /// <summary>Total item</summary>
+    /// <summary>Total number of items.</summary>
     public int Total { get; set; }
 
-    /// <summary>List of elements</summary>
+    /// <summary>List of items for the current page.</summary>
     public IList<TModel> Elements { get; set; }
 }

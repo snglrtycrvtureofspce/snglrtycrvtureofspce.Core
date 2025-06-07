@@ -1,8 +1,10 @@
 ﻿namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
 
-/// <summary>Interface of response</summary>
+/// <summary>
+/// Represents a standard response interface.
+/// </summary>
 public interface IResponse
 {
-    /// <summary>Return Message</summary>
+    /// <summary>Optional response message.</summary>
     string? Message { get; set; }
 }

@@ -2,10 +2,12 @@
 
 namespace snglrtycrvtureofspce.Core.Base.Responses;
 
-/// <summary>Standard Page view response for get List item</summary>
-/// <typeparam name="T"></typeparam>
+/// <summary>
+/// Standard paginated response including metadata and message.
+/// </summary>
+/// <typeparam name="T">Type of elements in the page.</typeparam>
 public class PageViewResponse<T> : PageView<T>, IResponse where T : class
 {
-    /// <summary>Message</summary>
+    /// <summary>Optional message attached to the response.</summary>
     public string? Message { get; set; }
 }
