@@ -15,28 +15,26 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</RepositoryUrl>
-        <LangVersion>12</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="assets\logo\snglrtycrvtureofspce_128x128.png" Pack="true" PackagePath="" />
+        <None Include="..\..\assets\logo\snglrtycrvtureofspce_128x128.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\README.md" Pack="true" PackagePath=""/>
+        <None Include="..\..\README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\snglrtycrvtureofspce.Core.xml</DocumentationFile>
-      <WarningLevel>4</WarningLevel>
-      <NoWarn>1701;1702;1591;8632</NoWarn>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\snglrtycrvtureofspce.Core.xml</DocumentationFile>
-      <WarningLevel>4</WarningLevel>
-      <NoWarn>1701;1702;1591;8632</NoWarn>
-    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\snglrtycrvtureofspce.Core.Contracts\snglrtycrvtureofspce.Core.Contracts.csproj" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.0.0" />
@@ -50,6 +48,7 @@
         <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
         <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
 </Project>
