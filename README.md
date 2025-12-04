@@ -1,6 +1,3 @@
-<div align="center">
-  <img src="assets/logo/snglrtycrvtureofspce_128x128.png" alt="snglrtycrvtureofspce.Core Logo" width="128" height="128">
-
 # snglrtycrvtureofspce.Core
 
 [![CI](https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core/workflows/CI/badge.svg)](https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core/actions?query=workflow%3ACI)
@@ -14,8 +11,6 @@
 [Features](#features) •
 [Documentation](#usage) •
 [Contributing](CONTRIBUTING.md)
-
-</div>
 
 ---
 
