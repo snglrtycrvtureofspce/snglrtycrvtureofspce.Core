@@ -15,8 +15,8 @@ public class NotFoundException : Exception
     {
     }
 
-    public NotFoundException(IEnumerable<ValidationFailure> errors) : base(string.Join(Environment.NewLine,
-        errors.Select(e => e.ErrorMessage)))
+    public NotFoundException(IEnumerable<ValidationFailure> errors)
+        : base(string.Join(Environment.NewLine, errors.Select(e => e.ErrorMessage)))
     {
     }
 

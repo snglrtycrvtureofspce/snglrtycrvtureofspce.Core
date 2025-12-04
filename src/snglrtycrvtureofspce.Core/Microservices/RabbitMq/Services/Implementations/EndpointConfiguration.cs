@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
+using snglrtycrvtureofspce.Core.Contracts.Microservices.RabbitMq.Services.Interfaces;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.RabbitMqEndpointBinder;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
@@ -29,6 +30,6 @@ public class EndpointConfiguration<T> : IEndpointConfiguration
         RoutingKey = routingKey;
     }
 
-    public IBus BuildWrapper(IServiceProvider services, IOptions<RabbitMqConfiguration> options) =>
-        new RabbitMqWrapper<T>(options, this, services);
+    public IBus BuildWrapper(IServiceProvider services, IOptions<RabbitMqConfiguration> options)
+        => new RabbitMqWrapper<T>(options, this, services);
 }

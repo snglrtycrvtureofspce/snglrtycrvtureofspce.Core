@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.ObjectPool;
 using RabbitMQ.Client;
+using snglrtycrvtureofspce.Core.Contracts.Microservices.RabbitMq.Services.Interfaces;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
@@ -17,11 +18,12 @@ public static class RabbitServiceCollectionExtensions
         services.AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
         services.AddSingleton<IPooledObjectPolicy<IModel>, RabbitModelPooledObjectPolicy>();
         services.AddSingleton<IRabbitManager, RabbitManager>();
-        
+
         return services;
     }
 
-    public static void AddRabbitMqEndpoints(this IServiceCollection services, 
+    public static void AddRabbitMqEndpoints(
+        this IServiceCollection services,
         Action<EndpointsConfiguration> configuration)
     {
         var implementationInstance = new EndpointsConfiguration();

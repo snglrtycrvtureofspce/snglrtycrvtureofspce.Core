@@ -5,8 +5,8 @@ namespace snglrtycrvtureofspce.Core.Extensions;
 
 public static class EnumExtensions
 {
-    public static string GetCurrencySymbol(this Currency currencyCode) =>
-        currencyCode switch
+    public static string GetCurrencySymbol(this Currency currencyCode)
+        => currencyCode switch
         {
             Currency.Usd => "$",
             Currency.Eur => "€",

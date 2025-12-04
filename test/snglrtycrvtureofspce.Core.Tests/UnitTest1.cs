@@ -9,11 +9,11 @@ public class UnitTest1
     public void Test1()
     {
         // Arrange
-        var expected = 1;
-        
+        const int expected = 1;
+
         // Act
-        var actual = 1;
-        
+        const int actual = 1;
+
         // Assert
         actual.Should().Be(expected);
     }

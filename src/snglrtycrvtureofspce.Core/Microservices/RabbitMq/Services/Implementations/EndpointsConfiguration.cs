@@ -5,8 +5,12 @@ namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementati
 
 public class EndpointsConfiguration : IEndpointsConfiguration
 {
-    public IEndpointConfiguration MapEndpoint<T>(string queue, bool durable = true, bool exclusive = false,
-        bool autoDelete = false, IDictionary<string, object> arguments = null)
+    public IEndpointConfiguration MapEndpoint<T>(
+        string queue,
+        bool durable = true,
+        bool exclusive = false,
+        bool autoDelete = false,
+        IDictionary<string, object> arguments = null)
     {
         var endpointConfiguration = new EndpointConfiguration<T>
         {
@@ -16,9 +20,9 @@ public class EndpointsConfiguration : IEndpointsConfiguration
             AutoDelete = autoDelete,
             Arguments = arguments
         };
-        Endpoints.Add((IEndpointConfiguration)endpointConfiguration);
+        Endpoints.Add(endpointConfiguration);
 
-        return (IEndpointConfiguration)endpointConfiguration;
+        return endpointConfiguration;
     }
 
     public List<IEndpointConfiguration> Endpoints { get; set; } = [];

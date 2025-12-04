@@ -11,8 +11,8 @@ public class TestAsyncQueryProvider<T>(IQueryProvider inner) : IAsyncQueryProvid
 {
     public IQueryable CreateQuery(Expression expression) => new TestAsyncEnumerable<T>(expression);
 
-    public IQueryable<TElement> CreateQuery<TElement>(Expression expression) =>
-        new TestAsyncEnumerable<TElement>(expression);
+    public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
+        => new TestAsyncEnumerable<TElement>(expression);
 
     public object? Execute(Expression expression) => inner.Execute(expression);
 

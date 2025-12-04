@@ -14,16 +14,16 @@ namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth;
 
 public static class JwtTokenProvider
 {
-    public static string GenerateJwtToken(UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
+    private static string GenerateJwtToken(UserEntity user, IEnumerable<IdentityRole<Guid>> roles)
     {
         var claims = new List<Claim>
         {
-            new Claim("UserId", user.Id.ToString()),
-            new Claim("Username", user.UserName),
-            new Claim("Email", user.Email),
-            new Claim("Role", string.Join(" ", roles.Select(x => x.Name))),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString())
+            new("UserId", user.Id.ToString()),
+            new("Username", user.UserName),
+            new("Email", user.Email),
+            new("Role", string.Join(" ", roles.Select(x => x.Name))),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString())
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthOptions.JwtKey));
@@ -61,6 +61,6 @@ public static class JwtTokenProvider
             Agreement = true
         };
 
-        return GenerateJwtToken(systemUser, Enumerable.Empty<IdentityRole<Guid>>());
+        return GenerateJwtToken(systemUser, []);
     }
 }

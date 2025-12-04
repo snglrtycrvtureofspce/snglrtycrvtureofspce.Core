@@ -13,7 +13,7 @@ public static class ValidationErrorFactory
     /// <param name="errorMessage">The error message describing the validation failure.</param>
     /// <param name="errorCode">An optional error code for programmatic handling.</param>
     /// <returns>An enumerable containing a single validation failure.</returns>
-    public static IEnumerable<ValidationFailure> CreateError(
+    private static IEnumerable<ValidationFailure> CreateError(
         string propertyName,
         string errorMessage,
         string? errorCode = null) => new[] { new ValidationFailure(propertyName, errorMessage, errorCode) };

@@ -17,7 +17,7 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddCustomAuthorization(this IServiceCollection services)
     {
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        
+
         services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -37,15 +37,15 @@ public static class ServiceCollectionExtension
                     RoleClaimType = "role"
                 };
             });
-        
+
         services.AddAuthorization(options =>
         {
             options.AddPolicy(Policies.AdminOnly, policy => policy.RequireRole(RoleType.Administrator));
         });
-        
+
         return services;
     }
-    
+
     public static IServiceCollection AddSwaggerConf(this IServiceCollection collection, string assemblyName)
     {
         collection.AddSwaggerGen(c =>

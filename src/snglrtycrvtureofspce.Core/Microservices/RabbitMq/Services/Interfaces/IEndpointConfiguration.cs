@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.Options;
+using snglrtycrvtureofspce.Core.Contracts.Microservices.RabbitMq.Services.Interfaces;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
 

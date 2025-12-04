@@ -8,9 +8,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using snglrtycrvtureofspce.Core.Contracts.Microservices.RabbitMq.Services.Interfaces;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Implementations;
-using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
 namespace snglrtycrvtureofspce.Core.Microservices.RabbitMq.RabbitMqEndpointBinder;
 
@@ -21,7 +21,9 @@ public class RabbitMqWrapper<T> : IBus
     private readonly string _queue;
     private readonly IServiceProvider _serviceProvider;
 
-    public RabbitMqWrapper(IOptions<RabbitMqConfiguration> options, EndpointConfiguration<T> configuration,
+    public RabbitMqWrapper(
+        IOptions<RabbitMqConfiguration> options,
+        EndpointConfiguration<T> configuration,
         IServiceProvider services)
     {
         _serviceProvider = services;
@@ -42,7 +44,7 @@ public class RabbitMqWrapper<T> : IBus
 
     public Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        EventingBasicConsumer consumer = new EventingBasicConsumer(_channel);
+        var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += (EventHandler<BasicDeliverEventArgs>)(async (_, ea) =>
         {
             var content = Encoding.UTF8.GetString(ea.Body.ToArray());

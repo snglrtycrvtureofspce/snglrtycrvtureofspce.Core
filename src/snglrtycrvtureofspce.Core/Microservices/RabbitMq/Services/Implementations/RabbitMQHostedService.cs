@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using snglrtycrvtureofspce.Core.Contracts.Microservices.RabbitMq.Services.Interfaces;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Configurations;
 using snglrtycrvtureofspce.Core.Microservices.RabbitMq.Services.Interfaces;
 
@@ -14,7 +15,9 @@ public class RabbitMqHostedService : BackgroundService
 {
     private readonly IList<IBus> _wrappers;
 
-    public RabbitMqHostedService(IServiceProvider services, IOptions<RabbitMqConfiguration> options,
+    public RabbitMqHostedService(
+        IServiceProvider services,
+        IOptions<RabbitMqConfiguration> options,
         IEndpointsConfiguration configuration)
     {
         _wrappers = (IList<IBus>)configuration.Endpoints
@@ -24,6 +27,6 @@ public class RabbitMqHostedService : BackgroundService
             .ToList<IBus>();
     }
 
-    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
-        Task.WhenAll(_wrappers.Select<IBus, Task>((Func<IBus, Task>)(x => x.ExecuteAsync(stoppingToken))));
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        => Task.WhenAll(_wrappers.Select<IBus, Task>((Func<IBus, Task>)(x => x.ExecuteAsync(stoppingToken))));
 }

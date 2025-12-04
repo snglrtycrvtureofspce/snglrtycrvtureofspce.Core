@@ -13,8 +13,8 @@ public class HasAccessAuthorizationAttribute : ActionFilterAttribute
 {
     public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        var tk = context.HttpContext.Request.Headers.Authorization.FirstOrDefault() ??
-                 throw new ValidationException(AuthorizationError.UnableToGetAuthorizationToken());
+        var tk = context.HttpContext.Request.Headers.Authorization.FirstOrDefault()
+                 ?? throw new ValidationException(AuthorizationError.UnableToGetAuthorizationToken());
 
         var token = tk.Split(" ")[1];
         var jwtToken = new JwtSecurityToken(token);

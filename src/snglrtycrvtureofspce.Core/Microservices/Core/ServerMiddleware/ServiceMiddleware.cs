@@ -29,9 +29,9 @@ public static class ServiceMiddleware
         => Guid.Parse((claims.SingleOrDefault((Func<Claim, bool>)(s => s.Type == "UserId"))
                        ?? throw new UnauthorizedAccessException()).Value);
 
-    public static bool IsInRootAdmin(this ControllerBase controller) =>
-        controller.User.IsInRole(RoleType.Administrator);
+    public static bool IsInRootAdmin(this ControllerBase controller)
+        => controller.User.IsInRole(RoleType.Administrator);
 
-    public static string GetMicroserviceHost(this IConfiguration configuration, string name) =>
-        configuration?.GetSection("ServicesHosts")?[name];
+    public static string GetMicroserviceHost(this IConfiguration configuration, string name)
+        => configuration?.GetSection("ServicesHosts")?[name];
 }

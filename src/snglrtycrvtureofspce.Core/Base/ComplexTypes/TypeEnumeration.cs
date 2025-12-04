@@ -15,10 +15,8 @@ public abstract class TypeEnumeration(string value) : IComparable
         string.Compare(Value, ((TypeEnumeration)obj)?.Value, StringComparison.Ordinal);
 
     public static IEnumerable<T> GetAll<T>() where T : TypeEnumeration
-    {
-        return ((IEnumerable<FieldInfo>)typeof(T)
+        => ((IEnumerable<FieldInfo>)typeof(T)
                 .GetFields(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public))
             .Select<FieldInfo, object>((Func<FieldInfo, object>)(f => f.GetValue((object)null)))
             .Cast<T>();
-    }
 }

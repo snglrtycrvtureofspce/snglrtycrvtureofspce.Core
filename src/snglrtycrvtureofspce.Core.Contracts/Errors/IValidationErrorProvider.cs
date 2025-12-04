@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FluentValidation.Results;
 
-namespace snglrtycrvtureofspce.Core.Errors;
+namespace snglrtycrvtureofspce.Core.Contracts.Errors;
 
 public interface IValidationErrorProvider
 {

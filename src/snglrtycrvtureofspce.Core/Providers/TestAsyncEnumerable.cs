@@ -15,6 +15,6 @@ public class TestAsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, I
     {
     }
 
-    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = default) =>
-        new TestAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
+    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = default)
+        => new TestAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
 }

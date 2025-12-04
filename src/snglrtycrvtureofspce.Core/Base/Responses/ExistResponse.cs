@@ -1,4 +1,4 @@
-﻿using snglrtycrvtureofspce.Core.Base.Infrastructure;
+﻿using snglrtycrvtureofspce.Core.Contracts.Base.Infrastructure;
 
 namespace snglrtycrvtureofspce.Core.Base.Responses;
 

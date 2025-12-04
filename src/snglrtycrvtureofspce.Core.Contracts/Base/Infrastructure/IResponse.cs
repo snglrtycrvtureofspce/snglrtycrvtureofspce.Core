@@ -1,4 +1,4 @@
-﻿namespace snglrtycrvtureofspce.Core.Base.Infrastructure;
+﻿namespace snglrtycrvtureofspce.Core.Contracts.Base.Infrastructure;
 
 /// <summary>
 /// Represents a standard response interface.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
@@ -39,12 +40,18 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         catch (DbUpdateException ex)
             when (IsForeignKeyViolationExceptionMiddleware.CheckForeignKeyViolation(ex, out var referencedObject))
         {
-            await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError,
-                "Unable to delete object. It is referenced by", referencedObject);
+            await HandleExceptionAsync(
+                context,
+                StatusCodes.Status500InternalServerError,
+                "Unable to delete object. It is referenced by",
+                referencedObject);
         }
         catch (DbUpdateException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError, "Database error.",
+            await HandleExceptionAsync(
+                context,
+                StatusCodes.Status500InternalServerError,
+                "Database error.",
                 ex.InnerException?.Message ?? ex.Message);
         }
         catch (OperationCanceledException)
@@ -67,10 +74,13 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         }
     }
 
-    private static Task HandleExceptionAsync(HttpContext context, int statusCode, string message,
+    private static Task HandleExceptionAsync(
+        HttpContext context,
+        int statusCode,
+        string message,
         object? details = null)
     {
-        context.Response.ContentType = "application/json";
+        context.Response.ContentType = MediaTypeNames.Application.Json;
         context.Response.StatusCode = statusCode;
 
         var response = new { message, details };

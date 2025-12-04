@@ -33,9 +33,12 @@ public class RabbitModelPooledObjectPolicy : IPooledObjectPolicy<IModel>
     public bool Return(IModel obj)
     {
         if (obj.IsOpen)
+        {
             return true;
+        }
+
         obj.Dispose();
-        
+
         return false;
     }
 }

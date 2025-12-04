@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Mime;
 using Microsoft.AspNetCore.Http;
 using snglrtycrvtureofspce.Core.Base.ComplexTypes;
 
@@ -14,7 +15,7 @@ public class JwtHttpClient : HttpClient
     })
     {
         Timeout = TimeSpan.FromMinutes(1.0);
-        DefaultRequestHeaders.Add("Accept", "application/json");
+        DefaultRequestHeaders.Add("Accept", MediaTypeNames.Application.Json);
         SetSystemToken();
         BaseAddress = new Uri(hostUrl);
     }

@@ -9,17 +9,20 @@ namespace snglrtycrvtureofspce.Core.Helpers;
 public static class EnumDescriptionHelper
 {
     public static async Task<string[]> GetEnumDescriptionsAsync(IEnumerable<Enum> enumValues)
-    {
-        var descriptionTasks = enumValues.Select(GetEnumDescriptionAsync).ToArray();
-        return await Task.WhenAll(descriptionTasks);
-    }
+        => await Task.WhenAll(enumValues.Select(GetEnumDescriptionAsync).ToArray());
 
-    private static async Task<string> GetEnumDescriptionAsync(Enum value) =>
-        await Task.Run(() =>
+    private static async Task<string> GetEnumDescriptionAsync(Enum value)
+        => await Task.Run(() =>
         {
             var field = value.GetType().GetField(value.ToString());
-            if (field == null) return value.ToString();
+            if (field == null)
+            {
+                return value.ToString();
+            }
+
             var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-            return attribute == null ? value.ToString() : attribute.Description;
+            return attribute == null
+                ? value.ToString()
+                : attribute.Description;
         });
 }
