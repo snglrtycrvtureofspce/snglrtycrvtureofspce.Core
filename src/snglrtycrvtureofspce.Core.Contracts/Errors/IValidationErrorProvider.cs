@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 
 namespace snglrtycrvtureofspce.Core.Contracts.Errors;
 
+/// <summary>
+/// Provides methods to create validation error messages for common scenarios.
+/// </summary>
 public interface IValidationErrorProvider
 {
     /// <summary>

@@ -1,9 +1,68 @@
 <Project>
+  <!-- Shared build properties for all projects in the solution -->
   <PropertyGroup>
-    <LangVersion>12</LangVersion>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>disable</Nullable>
-    <NoWarn>$(NoWarn);CS1701;CS1702;CS1591;NU1900;CS8632</NoWarn>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- Operating system detection for conditional compilation -->
+    <IsMac>$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::get_OSX())))</IsMac>
+    <IsWindows>$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::get_Windows())))</IsWindows>
+    <IsLinux>$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::get_Linux())))</IsLinux>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Language settings -->
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Features>strict</Features>
+    
+    <!-- Code analysis -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    
+    <!-- Warnings configuration -->
+    <NoWarn>$(NoWarn);CS1701;CS1702;NU1900</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    
+    <!-- Build settings -->
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <!-- Package metadata (shared across all packable projects) -->
+  <PropertyGroup>
+    <Authors>snglrtycrvtureofspce</Authors>
+    <Copyright>Copyright © snglrtycrvtureofspce $([System.DateTime]::Now.Year)</Copyright>
+    <PackageProjectUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/snglrtycrvtureofspce/snglrtycrvtureofspce.Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>snglrtycrvtureofspce_128x128.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>snglrtycrvtureofspce;asp.net;core;sdk;microservices</PackageTags>
+    
+    <!-- Symbol package settings -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    
+    <!-- Documentation -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <!-- Versioning with MinVer -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    
+    <!-- CI/CD settings -->
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- Source Link for debugging -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- MinVer for automatic semantic versioning -->
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+    <PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
+  </ItemGroup>
 </Project>

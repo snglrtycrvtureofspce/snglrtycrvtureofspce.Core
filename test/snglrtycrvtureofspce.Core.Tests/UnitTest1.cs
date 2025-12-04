@@ -9,12 +9,12 @@ public class UnitTest1
     public void Test1()
     {
         // Arrange
-        const int expected = 1;
+        const int Expected = 1;
 
         // Act
-        const int actual = 1;
+        const int Actual = 1;
 
         // Assert
-        actual.Should().Be(expected);
+        Actual.Should().Be(Expected);
     }
 }

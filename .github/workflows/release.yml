@@ -1,0 +1,66 @@
+# Release workflow
+# This workflow is triggered when a new release is published
+# It builds the packages and publishes them to NuGet
+
+name: Release
+
+on:
+  release:
+    types: [published]
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  CONFIGURATION: Release
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: tree:0
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+      
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      - name: Build
+        run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
+      
+      - name: Test
+        run: dotnet test --configuration ${{ env.CONFIGURATION }} --no-build --verbosity normal
+      
+      - name: Pack
+        run: dotnet pack --configuration ${{ env.CONFIGURATION }} --no-build --output ./artifacts
+      
+      - name: Push to NuGet
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      
+      - name: Push symbol packages
+        run: dotnet nuget push "./artifacts/*.snupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        continue-on-error: true
+      
+      - name: Upload release assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-packages
+          path: |
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
+          retention-days: 90

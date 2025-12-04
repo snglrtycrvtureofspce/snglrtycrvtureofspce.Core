@@ -3,7 +3,22 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
+# ========================
+# Project specific ignores
+# ========================
+
+# Strong naming key files (keep these secure!)
+*.snk
+
+# Build artifacts
+artifacts/
+
+# NuGet packages (local restore)
+packages/
+
+# ========================
 # Node artifact files
+# ========================
 node_modules/
 dist/
 
@@ -21,7 +36,6 @@ dist/
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
