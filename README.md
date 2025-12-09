@@ -16,13 +16,18 @@
 
 ## Features
 
-- 🎯 **MediatR Integration** - Request/response pipeline with validation behaviors
+- 🎯 **MediatR Integration** - Request/response pipeline with validation and logging behaviors
 - ✅ **FluentValidation** - Built-in request validation pipeline behavior
 - 🔐 **JWT Authentication** - Ready-to-use JWT token handling and policies
 - 🐇 **RabbitMQ** - Message broker integration for microservices communication
 - 📚 **Swagger/OpenAPI** - Pre-configured Swagger setup with versioning support
 - ⚠️ **Exception Handling** - Centralized exception middleware with consistent error responses
 - 🏗️ **Entity Framework Core** - Common patterns and helpers for EF Core
+- 🎲 **Result Pattern** - Functional error handling without exceptions
+- 🛡️ **Guard Clauses** - Defensive programming helpers
+- 📦 **Value Objects** - Email, Phone, Money, Address, DateRange
+- 🧩 **Domain Events** - Event-driven architecture support
+- 🔄 **Specification Pattern** - Encapsulated query logic
 
 ## Installing snglrtycrvtureofspce.Core
 
@@ -60,6 +65,18 @@ This package is useful when:
 | .NET Framework | 4.6.2+ (Windows only) |
 
 ## Usage
+
+### Quick Start
+
+Register all core services in one line:
+
+```csharp
+// In Program.cs
+builder.Services.AddCore(typeof(Program).Assembly);
+
+// Add middleware
+app.UseCoreMiddlewares();
+```
 
 ### Exception Handling Middleware
 
@@ -104,14 +121,159 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 Use the built-in exceptions for consistent error handling:
 
 ```csharp
-// Not Found
-throw new NotFoundException($"User with id {id} not found");
+// Not Found with factory method
+throw NotFoundException.For<User>(userId);
 
-// Conflict
-throw new ConflictException($"User with email {email} already exists");
+// Conflict with field info
+throw ConflictException.ForField<User>("Email", email);
 
-// Forbidden
-throw new ForbiddenAccessException("Only administrators can perform this action");
+// Forbidden with role check
+throw ForbiddenAccessException.ForRole("Admin");
+
+// Bad Request
+throw new BadRequestException("INVALID_INPUT", "Invalid input data");
+```
+
+### Result Pattern
+
+Use Result<T> for functional error handling:
+
+```csharp
+public Result<User> GetUser(int id)
+{
+    var user = _repository.Find(id);
+    if (user is null)
+        return Result<User>.Failure(Error.NotFound("User.NotFound", $"User {id} not found"));
+    
+    return Result<User>.Success(user);
+}
+
+// Usage with pattern matching
+var result = GetUser(1);
+return result.Match(
+    onSuccess: user => Ok(user),
+    onFailure: error => NotFound(error.Message)
+);
+
+// Chaining operations
+var result = GetUser(1)
+    .Map(user => user.Email)
+    .Bind(email => ValidateEmail(email))
+    .Tap(email => _logger.Log($"Valid email: {email}"));
+```
+
+### Guard Clauses
+
+Defensive programming made easy:
+
+```csharp
+public void CreateUser(string name, string email, int age)
+{
+    Guard.AgainstNullOrEmpty(name, nameof(name));
+    Guard.AgainstInvalidEmail(email, nameof(email));
+    Guard.AgainstNegative(age, nameof(age));
+    Guard.AgainstOutOfRange(age, 0, 150, nameof(age));
+    
+    // Continue with valid data...
+}
+```
+
+### Value Objects
+
+Use built-in value objects for common types:
+
+```csharp
+// Email
+var email = Email.Create("user@example.com");
+
+// Phone Number
+var phone = PhoneNumber.Create("+1 (555) 123-4567");
+
+// Money with currency
+var price = Money.Create(99.99m, "USD");
+var total = price * 3;
+
+// Address
+var address = Address.Create(
+    street: "123 Main St",
+    city: "New York",
+    postalCode: "10001",
+    country: "USA",
+    state: "NY"
+);
+
+// Date Range
+var range = DateRange.Create(DateTime.Today, DateTime.Today.AddDays(7));
+if (range.Contains(DateTime.Now)) { /* ... */ }
+```
+
+### Entity Base Classes
+
+Use base classes for your domain entities:
+
+```csharp
+// Simple entity with Guid ID
+public class User : Entity
+{
+    public string Name { get; set; }
+}
+
+// Auditable entity with timestamps
+public class Order : AuditableEntity
+{
+    public decimal Total { get; set; }
+    // CreatedAt, CreatedBy, ModifiedAt, ModifiedBy included
+}
+
+// Soft-deletable entity
+public class Product : SoftDeletableEntity
+{
+    public string Name { get; set; }
+    // IsDeleted, DeletedAt, DeletedBy included
+    // Use Delete() and Restore() methods
+}
+```
+
+### Specification Pattern
+
+Encapsulate query logic:
+
+```csharp
+public class ActiveUsersSpec : Specification<User>
+{
+    public ActiveUsersSpec()
+    {
+        AddCriteria(u => u.IsActive);
+        AddInclude(u => u.Orders);
+        ApplyOrderBy(u => u.LastLoginDate);
+    }
+}
+
+// Usage
+var spec = new ActiveUsersSpec();
+var users = await _repository.FindAsync(spec);
+```
+
+### Extension Methods
+
+Rich set of utility extensions:
+
+```csharp
+// Collections
+users.IsNullOrEmpty();
+items.Batch(100);  // Split into chunks
+list.ForEach(x => Process(x));
+
+// Strings
+"HelloWorld".ToSnakeCase();  // "hello_world"
+"secret@email.com".Mask(3, 4);  // "sec*********\.com"
+text.Truncate(50);
+
+// DateTime
+date.StartOfMonth();
+date.IsWeekend();
+date.AddBusinessDays(5);
+date.ToRelativeTime();  // "2 hours ago"
 ```
 
 ### Expression Helpers

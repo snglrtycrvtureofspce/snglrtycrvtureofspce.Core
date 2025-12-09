@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using snglrtycrvtureofspce.Core.Base.Responses;
 using snglrtycrvtureofspce.Core.Exceptions;
 
 namespace snglrtycrvtureofspce.Core.Middlewares;
@@ -16,6 +17,7 @@ namespace snglrtycrvtureofspce.Core.Middlewares;
 /// to appropriate HTTP responses. It supports the following exception types:
 /// <list type="bullet">
 ///     <item><description><see cref="ValidationException"/> - Returns HTTP 400 Bad Request</description></item>
+///     <item><description><see cref="BadRequestException"/> - Returns HTTP 400 Bad Request</description></item>
 ///     <item><description><see cref="NotFoundException"/> - Returns HTTP 404 Not Found</description></item>
 ///     <item><description><see cref="UnauthorizedAccessException"/> - Returns HTTP 401 Unauthorized</description></item>
 ///     <item><description><see cref="ForbiddenAccessException"/> - Returns HTTP 403 Forbidden</description></item>
@@ -45,58 +47,71 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         }
         catch (ValidationException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status400BadRequest, "Validation error.", ex.Errors);
+            var errors = ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage, e.ErrorCode });
+            await HandleExceptionAsync(context, StatusCodes.Status400BadRequest, "Validation error.", errors, "VALIDATION_ERROR");
+        }
+        catch (BadRequestException ex)
+        {
+            await HandleExceptionAsync(context, StatusCodes.Status400BadRequest, ex.Message, ex.Details, ex.ErrorCode);
         }
         catch (NotFoundException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status404NotFound, ex.Message);
+            await HandleExceptionAsync(context, StatusCodes.Status404NotFound, ex.Message, ex.Details, ex.ErrorCode);
         }
         catch (UnauthorizedAccessException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status401Unauthorized, "Unauthorized.", ex.Message);
+            await HandleExceptionAsync(context, StatusCodes.Status401Unauthorized, "Unauthorized.", ex.Message, "UNAUTHORIZED");
         }
         catch (ForbiddenAccessException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status403Forbidden, "Forbidden.", ex.Message);
+            await HandleExceptionAsync(context, StatusCodes.Status403Forbidden, ex.Message, ex.Details, ex.ErrorCode);
         }
         catch (TimeoutException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status408RequestTimeout, "Request timed out.", ex.Message);
+            await HandleExceptionAsync(context, StatusCodes.Status408RequestTimeout, "Request timed out.", ex.Message, "TIMEOUT");
         }
         catch (DbUpdateException ex)
             when (IsForeignKeyViolationExceptionMiddleware.CheckForeignKeyViolation(ex, out var referencedObject))
         {
             await HandleExceptionAsync(
                 context,
-                StatusCodes.Status500InternalServerError,
-                "Unable to delete object. It is referenced by",
-                referencedObject);
+                StatusCodes.Status409Conflict,
+                "Unable to delete object. It is referenced by another entity.",
+                referencedObject,
+                "FOREIGN_KEY_VIOLATION");
         }
         catch (DbUpdateException ex)
         {
+            logger.LogError(ex, "Database error occurred.");
             await HandleExceptionAsync(
                 context,
                 StatusCodes.Status500InternalServerError,
                 "Database error.",
-                ex.InnerException?.Message ?? ex.Message);
+                ex.InnerException?.Message ?? ex.Message,
+                "DATABASE_ERROR");
         }
         catch (OperationCanceledException)
         {
-            context.Response.StatusCode = 499;
+            context.Response.StatusCode = 499; // Client Closed Request
         }
         catch (ConflictException ex)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status409Conflict, "Conflict.", ex.Message);
+            await HandleExceptionAsync(context, StatusCodes.Status409Conflict, ex.Message, ex.Details, ex.ErrorCode);
         }
         catch (NotImplementedException)
         {
-            await HandleExceptionAsync(context, StatusCodes.Status501NotImplemented, "Not implemented.");
+            await HandleExceptionAsync(context, StatusCodes.Status501NotImplemented, "Not implemented.", errorCode: "NOT_IMPLEMENTED");
+        }
+        catch (CoreException ex)
+        {
+            logger.LogWarning(ex, "Core exception occurred: {ErrorCode}", ex.ErrorCode);
+            await HandleExceptionAsync(context, StatusCodes.Status400BadRequest, ex.Message, ex.Details, ex.ErrorCode);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Unexpected error occurred.");
             await HandleExceptionAsync(context, StatusCodes.Status500InternalServerError,
-                "An unexpected error occurred.");
+                "An unexpected error occurred.", errorCode: "INTERNAL_ERROR");
         }
     }
 
@@ -104,12 +119,21 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         HttpContext context,
         int statusCode,
         string message,
-        object? details = null)
+        object? details = null,
+        string? errorCode = null)
     {
         context.Response.ContentType = MediaTypeNames.Application.Json;
         context.Response.StatusCode = statusCode;
 
-        var response = new { message, details };
+        var response = new ErrorResponse
+        {
+            Message = message,
+            ErrorCode = errorCode,
+            Details = details,
+            TraceId = context.TraceIdentifier,
+            Timestamp = DateTime.UtcNow
+        };
+
         return context.Response.WriteAsJsonAsync(response);
     }
 }
