@@ -81,6 +81,17 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
                 "FOREIGN_KEY_VIOLATION");
         }
         catch (DbUpdateException ex)
+            when (IsUniqueConstraintViolationExceptionMiddleware.CheckUniqueConstraintViolation(ex, out var violatedConstraint))
+        {
+            logger.LogWarning(ex, "Unique constraint violation: {ConstraintName}", violatedConstraint);
+            await HandleExceptionAsync(
+                context,
+                StatusCodes.Status409Conflict,
+                "The record with the provided values already exists.",
+                violatedConstraint,
+                "UNIQUE_CONSTRAINT_VIOLATION");
+        }
+        catch (DbUpdateException ex)
         {
             logger.LogError(ex, "Database error occurred.");
             await HandleExceptionAsync(
