@@ -63,10 +63,13 @@ public abstract class AggregateRoot : IEntity
 
     #region IEntity
 
+    /// <inheritdoc />
     public Guid Id { get; set; }
 
+    /// <inheritdoc />
     public DateTimeOffset CreatedAt { get; set; }
 
+    /// <inheritdoc />
     public DateTimeOffset? UpdatedAt { get; set; }
 
     #endregion
