@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
@@ -50,7 +47,7 @@ public static class JwtTokenProvider
         {
             Id = Guid.NewGuid(),
             UserName = "System",
-            Email = "system@snglrtycrvtureofspce.me",
+            Email = "system@snglrtycrvtureofspce",
             FirstName = "System",
             LastName = "System",
             MiddleName = "System",

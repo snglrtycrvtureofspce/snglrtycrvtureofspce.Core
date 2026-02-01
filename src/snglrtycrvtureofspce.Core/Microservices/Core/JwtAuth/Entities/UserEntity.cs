@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using snglrtycrvtureofspce.Core.Contracts.Base.Infrastructure;
 
 namespace snglrtycrvtureofspce.Core.Microservices.Core.JwtAuth.Entities;
@@ -9,9 +7,9 @@ public class UserEntity : IdentityUser<Guid>, IEntity
 {
     #region IEntity
 
-    public DateTime CreatedDate { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
-    public DateTime ModificationDate { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
 
     #endregion
 

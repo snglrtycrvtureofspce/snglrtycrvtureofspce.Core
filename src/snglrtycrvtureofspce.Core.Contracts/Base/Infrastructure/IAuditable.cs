@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace snglrtycrvtureofspce.Core.Contracts.Base.Infrastructure;
+﻿namespace snglrtycrvtureofspce.Core.Contracts.Base.Infrastructure;
 
 /// <summary>
 /// Represents an auditable entity with user tracking.
@@ -11,5 +9,5 @@ public interface IAuditable : IEntity
     Guid CreatedBy { get; set; }
 
     /// <summary>Identifier of the user who last modified the entity.</summary>
-    Guid ModifiedBy { get; set; }
+    Guid? ModifiedBy { get; set; }
 }

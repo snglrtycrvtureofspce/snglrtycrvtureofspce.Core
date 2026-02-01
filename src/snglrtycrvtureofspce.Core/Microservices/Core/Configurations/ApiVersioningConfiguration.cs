@@ -1,5 +1,4 @@
-﻿using System;
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace snglrtycrvtureofspce.Core.Microservices.Core.Configurations;
@@ -14,7 +13,7 @@ public static class ApiVersioningConfiguration
             options.DefaultApiVersion = new ApiVersion(1.0);
             options.AssumeDefaultVersionWhenUnspecified = true;
             options.ApiVersionReader = ApiVersionReader.Combine(new HeaderApiVersionReader("apiVersion"));
-                
+
             options.Policies.Sunset(0.9)
                 .Effective(DateTimeOffset.Now.AddDays(60))
                 .Link("policy.html")

@@ -59,21 +59,22 @@ public interface IDomainEventDispatcher
 /// </summary>
 public abstract class AggregateRoot : IEntity
 {
-    private readonly System.Collections.Generic.List<IDomainEvent> _domainEvents = new();
+    private readonly List<IDomainEvent> _domainEvents = new();
 
-    /// <inheritdoc />
+    #region IEntity
+
     public Guid Id { get; set; }
 
-    /// <inheritdoc />
-    public DateTime CreatedDate { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
-    /// <inheritdoc />
-    public DateTime ModificationDate { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
+
+    #endregion
 
     /// <summary>
     /// Gets the domain events that have been raised.
     /// </summary>
-    public System.Collections.Generic.IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
     /// <summary>
     /// Adds a domain event to be published.

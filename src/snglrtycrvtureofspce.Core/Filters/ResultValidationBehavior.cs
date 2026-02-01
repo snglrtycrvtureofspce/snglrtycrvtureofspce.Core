@@ -33,7 +33,7 @@ public class ResultValidationBehavior<TRequest, TResponse> : IPipelineBehavior<T
     {
         if (!_validators.Any())
         {
-            return await next();
+            return await next(cancellationToken);
         }
 
         var context = new ValidationContext<TRequest>(request);
@@ -51,14 +51,13 @@ public class ResultValidationBehavior<TRequest, TResponse> : IPipelineBehavior<T
             return CreateValidationErrorResult(failures);
         }
 
-        return await next();
+        return await next(cancellationToken);
     }
 
     private static TResponse CreateValidationErrorResult(List<FluentValidation.Results.ValidationFailure> failures)
     {
         var responseType = typeof(TResponse);
 
-        // Check if response is Result<T>
         if (responseType.IsGenericType && responseType.GetGenericTypeDefinition() == typeof(Result<>))
         {
             var valueType = responseType.GetGenericArguments()[0];
@@ -66,14 +65,12 @@ public class ResultValidationBehavior<TRequest, TResponse> : IPipelineBehavior<T
                 "Validation.Failed",
                 string.Join("; ", failures.Select(f => $"{f.PropertyName}: {f.ErrorMessage}")));
 
-            // Create Result<T>.Failure(error)
             var resultType = typeof(Result<>).MakeGenericType(valueType);
             var failureMethod = resultType.GetMethod("Failure", new[] { typeof(Error) });
 
             return (TResponse)failureMethod!.Invoke(null, new object[] { error })!;
         }
 
-        // Fallback: throw exception
         throw new ValidationException(failures);
     }
 }

@@ -3,5 +3,5 @@
 public static class AuthOptions
 {
     public const string JwtIssuer = "snglrtycrvtureofspce";
-    public const string JwtKey = "e24d397d-df06-4943-801a-0cef7c7f1a53";
+    public const string JwtKey = "E24D397D-DF06-4943-801A-0CEF7C7F1A53";
 }

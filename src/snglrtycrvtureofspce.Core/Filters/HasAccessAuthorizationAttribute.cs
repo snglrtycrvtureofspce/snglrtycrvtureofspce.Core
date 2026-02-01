@@ -1,7 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IdentityModel.Tokens.Jwt;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Filters;
 using snglrtycrvtureofspce.Core.Errors;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace snglrtycrvtureofspce.Core.Base.ComplexTypes;
+﻿namespace snglrtycrvtureofspce.Core.Base.ComplexTypes;
 
 public class SystemUsersEnumeration(string value, Guid id) : TypeEnumeration(value)
 {

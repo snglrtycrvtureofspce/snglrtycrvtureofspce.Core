@@ -31,7 +31,7 @@ namespace snglrtycrvtureofspce.Core.Filters;
 /// </code>
 /// </example>
 public class RequestValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    : IPipelineBehavior<TRequest, TResponse> where TRequest : class
 {
     /// <summary>
     /// Handles the validation of the request before passing it to the next handler in the pipeline.
@@ -46,25 +46,25 @@ public class RequestValidationBehavior<TRequest, TResponse>(IEnumerable<IValidat
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        if (validators.Any())
-        {
-            var context = new ValidationContext<TRequest>(request);
+        ArgumentNullException.ThrowIfNull(next);
 
-            var validationResults = await Task.WhenAll(
-                validators.Select(v => v.ValidateAsync(context, cancellationToken))
-            );
+        if (!validators.Any())
+            return await next(cancellationToken);
 
-            var failures = validationResults
-                .SelectMany(result => result.Errors)
-                .Where(error => error != null)
-                .ToList();
+        var context = new ValidationContext<TRequest>(request);
 
-            if (failures.Count != 0)
-            {
-                throw new ValidationException(failures);
-            }
-        }
+        var validationResults = await Task.WhenAll(
+            validators.Select(v =>
+                v.ValidateAsync(context, cancellationToken)));
 
-        return await next();
+        var failures = validationResults
+            .Where(r => r.Errors.Count > 0)
+            .SelectMany(r => r.Errors)
+            .ToList();
+
+        if (failures.Count > 0)
+            throw new ValidationException(failures);
+
+        return await next(cancellationToken);
     }
 }

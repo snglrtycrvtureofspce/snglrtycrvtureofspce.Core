@@ -92,7 +92,7 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         }
         catch (OperationCanceledException)
         {
-            context.Response.StatusCode = 499; // Client Closed Request
+            context.Response.StatusCode = 499;
         }
         catch (ConflictException ex)
         {

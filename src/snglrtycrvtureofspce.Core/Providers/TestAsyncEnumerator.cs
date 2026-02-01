@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace snglrtycrvtureofspce.Core.Providers;
+﻿namespace snglrtycrvtureofspce.Core.Providers;
 
 public class TestAsyncEnumerator<T>(IEnumerator<T> inner) : IAsyncEnumerator<T>
 {

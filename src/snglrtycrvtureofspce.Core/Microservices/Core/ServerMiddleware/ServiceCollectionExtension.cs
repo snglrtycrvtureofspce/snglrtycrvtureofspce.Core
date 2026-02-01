@@ -1,5 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,7 +45,7 @@ public static class ServiceCollectionExtension
         return services;
     }
 
-    public static IServiceCollection AddSwaggerConf(this IServiceCollection collection, string assemblyName)
+    public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection collection, string assemblyName)
     {
         collection.AddSwaggerGen(c =>
         {

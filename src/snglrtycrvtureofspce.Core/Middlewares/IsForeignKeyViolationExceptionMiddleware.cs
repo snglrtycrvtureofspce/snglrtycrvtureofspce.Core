@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace snglrtycrvtureofspce.Core.Middlewares;
