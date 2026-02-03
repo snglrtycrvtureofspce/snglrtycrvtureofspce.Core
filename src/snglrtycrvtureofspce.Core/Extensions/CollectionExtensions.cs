@@ -142,15 +142,6 @@ public static class CollectionExtensions
         => source.Count == 0 ? default : source[Random.Shared.Next(source.Count)];
 
     /// <summary>
-    /// Shuffles the collection.
-    /// </summary>
-    /// <typeparam name="T">The type of elements in the collection.</typeparam>
-    /// <param name="source">The collection to shuffle.</param>
-    /// <returns>A shuffled collection.</returns>
-    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
-        => source.OrderBy(_ => Random.Shared.Next());
-
-    /// <summary>
     /// Appends an item to the collection.
     /// </summary>
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
