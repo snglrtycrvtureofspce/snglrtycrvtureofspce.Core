@@ -58,10 +58,10 @@ This package is useful when:
 
 ## Supported Frameworks
 
-| Framework | Version |
-|-----------|---------|
-| .NET | 6.0, 8.0 |
-| .NET Standard | 2.0 (Contracts only) |
+| Framework | Version               |
+|-----------|-----------------------|
+| .NET | 10.0                  |
+| .NET Standard | 2.0 (Contracts only)  |
 | .NET Framework | 4.6.2+ (Windows only) |
 
 ## Usage
@@ -298,8 +298,7 @@ services.AddSwaggerConfiguration();
 
 ### Prerequisites
 
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) or later
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (recommended)
+- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or later
 
 ### Build
 
