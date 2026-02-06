@@ -49,7 +49,9 @@ public class RequestValidationBehavior<TRequest, TResponse>(IEnumerable<IValidat
         ArgumentNullException.ThrowIfNull(next);
 
         if (!validators.Any())
+        {
             return await next(cancellationToken);
+        }
 
         var context = new ValidationContext<TRequest>(request);
 
@@ -63,7 +65,9 @@ public class RequestValidationBehavior<TRequest, TResponse>(IEnumerable<IValidat
             .ToList();
 
         if (failures.Count > 0)
+        {
             throw new ValidationException(failures);
+        }
 
         return await next(cancellationToken);
     }

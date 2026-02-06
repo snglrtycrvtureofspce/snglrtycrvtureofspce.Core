@@ -31,8 +31,7 @@ public static class Program
 
         // Sample endpoints
         app.MapGet("/", () => "Hello from snglrtycrvtureofspce.Core!")
-            .WithName("GetRoot")
-            .WithOpenApi();
+            .WithName("GetRoot");
 
         app.MapGet("/error/notfound", () =>
         {

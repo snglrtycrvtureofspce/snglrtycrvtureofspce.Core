@@ -47,7 +47,7 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
 
         try
         {
-            var response = await next();
+            var response = await next(cancellationToken);
 
             stopwatch.Stop();
             var elapsedMs = stopwatch.ElapsedMilliseconds;

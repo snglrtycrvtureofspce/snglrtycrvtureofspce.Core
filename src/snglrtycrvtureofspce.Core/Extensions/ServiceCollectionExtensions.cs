@@ -39,18 +39,16 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection.</returns>
     public static IServiceCollection AddValidators(this IServiceCollection services, params Assembly[] assemblies)
     {
-        foreach (var assembly in assemblies)
-        {
-            var validatorTypes = assembly.GetTypes()
+        var validatorTypes = assemblies
+            .SelectMany(assembly => assembly.GetTypes()
                 .Where(t => !t.IsAbstract && !t.IsGenericTypeDefinition)
                 .SelectMany(t => t.GetInterfaces()
                     .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>))
-                    .Select(i => new { Interface = i, Implementation = t }));
+                    .Select(i => new { Interface = i, Implementation = t })));
 
-            foreach (var validator in validatorTypes)
-            {
-                services.AddTransient(validator.Interface, validator.Implementation);
-            }
+        foreach (var validator in validatorTypes)
+        {
+            services.AddTransient(validator.Interface, validator.Implementation);
         }
 
         return services;
